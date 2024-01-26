@@ -6,6 +6,8 @@
 
             while (!endApp)
                 {
+
+                //initialize variables
                 string name = "";
                 int age = 0;
                 double height = 0;
@@ -14,16 +16,23 @@
                 double doubleAge = 0;
 
                 
-                Console.WriteLine("\nWelcome to Your Personal Information System \n");
-
+                Console.WriteLine("Welcome to Your Personal Information System \n");
+                
+                //input name and store input to name variable
                 Console.Write("Please enter your name: ");
                 name = Console.ReadLine();
+
+                //enter user age and check if age is greater than 0 not null
                 Console.Write("Please enter your age: ");
+
+                //try to parse the input as an integer and if true, assign the value to age
                 while (!int.TryParse(Console.ReadLine(), out age) || age < 0)
                 {
                     Console.WriteLine("Invalid input. Please enter a number\n");
                     Console.Write("Please enter your age: ");
                 }
+
+                //parse the input as a double and if true, assign the value to height
                 Console.Write("Please enter your height in meters: ");
                 while (!double.TryParse(Console.ReadLine(), out height) || height < 0)
                 {
@@ -31,11 +40,13 @@
                     Console.Write("Please enter your height in meters: ");
                 }
 
+                //convert age to a double data type
                 doubleAge = Convert.ToDouble(age);
                 
 
                 Console.WriteLine("\n------------------------\nYour Personal Details:\nName: {0}\nAge: {1}\nHeight: {2} meters\n", name, doubleAge, height);
-
+                
+                //compare user's age to variable verifyAge
                 Console.WriteLine("Age Check:");
                 if (age >= verifyAge)
                 {
@@ -47,21 +58,20 @@
                 }
 
                 Console.WriteLine("Legal Drinking Age Verification:");
-                if (age >= LEGAL_DRINKING_AGE)
-                {
-                    Console.WriteLine("Cheers, {0}! You're legally allowed to enjoy alcoholic beverages.\n", name);
-                }
-                else
-                {
-                    Console.WriteLine("Sorry, you are underage for drinking.\n");
-                }
 
-                // String Manipulation
+                //using ternary conditional operator 
+                Console.WriteLine(age >= LEGAL_DRINKING_AGE ? "Cheers, {0}! You're legally allowed to enjoy alcoholic beverages.\n" : "Sorry, you are underage for drinking.\n", name);
+
+
                 Console.WriteLine("Personal Details Presentation:");
+
+                //embed variable (name, doubleAge, height) within the string
                 string personalInfo = $"Your Personal Information: {name}, {doubleAge} years old, {height} meters tall";
                 Console.WriteLine(personalInfo);
                 Console.WriteLine("\n-----------------------------------------------------\nThank you for using your Personal Information System!\n-----------------------------------------------------\n");
                 Console.Write("Press 'n' then Enter to close the app, OR press any other key and Enter to continue: ");
+
+                //closes app if user input "n"
                 if (Console.ReadLine().ToLower() == "n") endApp = true;
 
                 Console.WriteLine("\n");
