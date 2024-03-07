@@ -25,7 +25,8 @@
                 //parse input to variable "age"
                 Console.Write("Please enter your age: ");
 
-                //loops the code until the user inputs a valid input (age should be a positive number)
+                //loops the code until the user inputs a valid input || (age should be a positive number)
+                //age is the output parameter
                 while (!int.TryParse(Console.ReadLine(), out age) || age < 0)
                 {   
                     //if input is invalid. system prompts the user to input a valid age
